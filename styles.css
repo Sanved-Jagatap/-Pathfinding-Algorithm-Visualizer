@@ -1,0 +1,177 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(to bottom right, #f0f4f8, #e0e7ff);
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+}
+
+header {
+    background: #4f46e5;
+    color: white;
+    padding: 20px;
+    width: 100%;
+    text-align: center;
+    border-bottom: 5px solid #3b3b3b;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0;
+    flex-wrap: wrap;
+}
+
+.menu-btn, .menu-select {
+    padding: 10px 15px;
+    margin: 5px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    background-color: #6366f1;
+    color: white;
+    transition: background-color 0.3s, transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.menu-btn:hover {
+    background-color: #4f46e5;
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.menu-select {
+    font-size: 16px;
+    margin-left: 10px;
+}
+
+/* Responsive maze grid */
+#mazeContainer {
+    display: grid;
+    grid-template-columns: repeat(20, 30px);
+    grid-template-rows: repeat(20, 30px);
+    gap: 1px;
+    margin: 20px 0;
+}
+
+/* For dynamically adjusting cell size if necessary */
+@media (max-width: 768px) {
+    #mazeContainer {
+        grid-template-columns: repeat(15, 25px);
+        grid-template-rows: repeat(15, 25px);
+    }
+}
+
+/* Maze cell styling */
+.cell {
+    width: 30px;
+    height: 30px;
+    border: 1px solid #ccc;
+    cursor: pointer;
+    transition: background-color 0.2s, opacity 0.2s, box-shadow 0.2s;
+    position: relative;
+}
+
+/* Hover effect for cells */
+.cell:hover {
+    opacity: 0.8;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+}
+
+/* Wall cells */
+.wall {
+    background-color: #3b3b3b;
+    transition: background-color 0.2s;
+}
+
+/* Start and End Cells */
+.start {
+    background-color: #4ade80;
+    border: 2px solid #38a169;
+    animation: glow 1.5s infinite alternate;
+}
+
+.end {
+    background-color: #f87171;
+    border: 2px solid #e53e3e;
+    animation: glow 1.5s infinite alternate;
+}
+
+/* Pathfinding Path Colors */
+.path-bfs {
+    background-color: red !important;
+    animation: blink 0.5s step-start infinite;
+}
+
+.path-dfs {
+    background-color: green !important;
+    animation: blink 0.6s step-start infinite;
+}
+
+.path-dijkstra {
+    background-color: blue !important;
+    animation: blink 0.7s step-start infinite;
+}
+
+.path-a-star {
+    background-color: yellow !important;
+    animation: blink 0.8s step-start infinite;
+}
+
+/* Visited Cells */
+.visited {
+    background-color: #a5b4fc;
+    animation: pulse 0.5s ease-in-out;
+}
+
+/* Keyframes for blinking effect */
+@keyframes blink {
+    50% {
+        opacity: 0;
+    }
+}
+
+/* Keyframes for glowing effect (start and end cells) */
+@keyframes glow {
+    0% {
+        box-shadow: 0 0 5px #fff;
+    }
+    100% {
+        box-shadow: 0 0 20px #fff, 0 0 30px #fff;
+    }
+}
+
+/* Pulse animation for visited cells */
+@keyframes pulse {
+    0% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(165, 180, 252, 0.7);
+    }
+    70% {
+        transform: scale(1);
+        box-shadow: 0 0 0 10px rgba(165, 180, 252, 0);
+    }
+    100% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(165, 180, 252, 0);
+    }
+}
+
+footer {
+    margin-top: 20px;
+    font-size: 14px;
+    text-align: center;
+    color: #666;
+}
+

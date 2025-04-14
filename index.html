@@ -1,0 +1,38 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pathfinding Visualizer</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Pathfinding Visualizer</h1>
+    </header>
+    
+    <nav id="menuBar">
+        <button id="randomMaze" class="menu-btn">Generate Random Maze</button>
+        <button id="startPathfinding" class="menu-btn">Find Path</button>
+        <button id="resetMaze" class="menu-btn">Reset Maze</button>
+        
+        <label for="algorithmSelect">Algorithm:</label>
+        <select id="algorithmSelect" class="menu-select">
+            <option value="BFS">BFS</option>
+            <option value="DFS">DFS</option>
+            <option value="Dijkstra">Dijkstra</option>
+            <option value="A*">A*</option>
+        </select>
+      <label>
+    <input type="checkbox" id="automaticMode"> Enable Automatic Pathfinding
+</label>
+    </nav>
+    
+    <div id="mazeContainer"></div>
+    
+    <footer>
+        <p>Click on cells to set walls, start, and end points. Use the buttons to generate mazes and find paths. The pathfinding algorithms will animate the process.</p>
+    </footer>
+    
+    <script src="script.js"></script>
+</body>
+</html>
